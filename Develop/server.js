@@ -11,5 +11,15 @@ app.use(express.json());
 // Middleware to serve static files
 app.use(express.static('public'));
 
+// Route handler for GET /notes
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, 'notes.html'));
+  });
+  
+  // Route handler for other GET requests
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  });
 
+  
 
