@@ -10,23 +10,23 @@ const PORT = process.env.PORT || 3000;
 // middleware to parse JSON requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('develop/public'));
 
 // HTML routes
 app.get('/notes', (req, res) => {
   // send the notes.html file when the /notes route is accessed
-  res.sendFile(path.join(__dirname, 'public/notes.html'));
+  res.sendFile(path.join(__dirname, 'develop/public/notes.html'));
 });
 
 app.get('/', (req, res) => {
   // send the index.html file when the root route is accessed
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile(path.join(__dirname, 'develop/public/index.html'));
 });
 
 // API routes
 app.get('/api/notes', (req, res) => {
   // read the db.json file and return all saved notes as JSON
-  fs.readFile(path.join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
+  fs.readFile(path.join(__dirname, 'Develop', 'db', 'db.json'), 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ error: 'Could not read note data' });
@@ -38,7 +38,7 @@ app.get('/api/notes', (req, res) => {
 
 app.post('/api/notes', (req, res) => {
   // read the db.json file and add the new note and save it
-  fs.readFile(path.join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
+  fs.readFile(path.join(__dirname, 'Develop', 'db', 'db.json'), 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ error: 'Could not read note data' });
@@ -53,7 +53,7 @@ app.post('/api/notes', (req, res) => {
 
     notes.push(newNote);
 
-    fs.writeFile(path.join(__dirname, 'db', 'db.json'), JSON.stringify(notes), 'utf8', (err) => {
+    fs.writeFile(path.join(__dirname, 'Develop', 'db', 'db.json'), JSON.stringify(notes), 'utf8', (err) => {
       if (err) {
         console.error(err);
         return res.status(500).json({ error: 'Note did not save' });
