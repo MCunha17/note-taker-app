@@ -13,7 +13,7 @@ Note Taker was created using [starter code](https://github.com/coding-boot-camp/
 
 You can access the deployed [here](https://mc-note-taker.herokuapp.com/) and the GitHub repository [here](https://github.com/MCunha17/note-taker-app).
 
-![Screenshot of application](/public/assets/images/note-taker-screenshot.png)
+![Screenshot of application](/public/assets/images/note-taker-app-screenshot.png)
 
 ## Table of Contents
 * [Features](#features)
