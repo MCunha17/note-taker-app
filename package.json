@@ -6,13 +6,12 @@
     "node": "16.16.0"
   },
   "scripts": {
-      "start": "node server.js"
+    "start": "node server.js"
   },
   "name": "miniature-eureka",
   "description": "![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MCunha17/note-taker-app.git"
