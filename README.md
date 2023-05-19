@@ -11,7 +11,7 @@ Note Taker is built using Express.js on the back end to handle routing and data 
 
 Note Taker was created using [starter code](https://github.com/coding-boot-camp/miniature-eureka) from [Xander Rapstine](https://github.com/Xandromus), which contained contributions from <a href="https://github.com/nol166">John McCambridge</a>, and <a href="https://github.com/Georgeyoo">Georgeyoo</a>.
 
-You can access the deployed [here] (coming soon) and the GitHub repository [here] (https://github.com/MCunha17/note-taker-app).
+You can access the deployed [here] (https://mc-note-taker.herokuapp.com/) and the GitHub repository [here] (https://github.com/MCunha17/note-taker-app).
 
 ![Screenshot of application](/)
 
