@@ -4,6 +4,7 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
+// Initialize variables for DOM elements
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
@@ -25,6 +26,7 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
+// Function to fetch all notes from the server
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -33,6 +35,7 @@ const getNotes = () =>
     },
   });
 
+// Function to save a note on the server
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -42,6 +45,7 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
+// Function to delete a note from the server
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
@@ -50,6 +54,7 @@ const deleteNote = (id) =>
     },
   });
 
+// Function to render the active note in the textarea
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
@@ -66,6 +71,7 @@ const renderActiveNote = () => {
   }
 };
 
+// Function to handle the save note event
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
@@ -108,6 +114,7 @@ const handleNewNoteView = (e) => {
   renderActiveNote();
 };
 
+// Function to handle rendering the save button
 const handleRenderSaveBtn = () => {
   if (!noteTitle.value.trim() || !noteText.value.trim()) {
     hide(saveNoteBtn);
@@ -155,10 +162,12 @@ const renderNoteList = async (notes) => {
   };
 
   if (jsonNotes.length === 0) {
+    // If there are no saved notes, create and append a list item indicating this
     noteListItems.push(createLi('No saved Notes', false));
   }
 
   jsonNotes.forEach((note) => {
+    // Create a list item for each note
     const li = createLi(note.title);
     li.dataset.note = JSON.stringify(note);
 
@@ -166,6 +175,7 @@ const renderNoteList = async (notes) => {
   });
 
   if (window.location.pathname === '/notes') {
+    // Sppend the note list items to the note list container in the sideware
     noteListItems.forEach((note) => noteList[0].append(note));
   }
 };
@@ -173,6 +183,7 @@ const renderNoteList = async (notes) => {
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
+// Event listeners and function calls
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
@@ -180,4 +191,5 @@ if (window.location.pathname === '/notes') {
   noteText.addEventListener('keyup', handleRenderSaveBtn);
 }
 
+// Fetch and render the notes from the server when the page loads
 getAndRenderNotes();
